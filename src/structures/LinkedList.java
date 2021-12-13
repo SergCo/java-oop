@@ -21,15 +21,39 @@ public class LinkedList {
         count++;
     }
 
+   public void add(int[] array) {
+        for (int value : array) {
+            add(value);
+        }
+    }
+
+    public void add(DynaArray dynaArray) {
+        add(dynaArray.toArray());
+    }
+    public void add(LinkedList secondList) {
+        if (secondList.count > 0) {
+            if (first == null) {
+                first = secondList.first;
+            } else {
+                last.next = secondList.first;
+            }
+            last = secondList.last;
+            count += secondList.count;
+        }
+    }
+
+
     public int[] toArray() {
-        DynaArray dynaArray = new DynaArray();
+        int[] result = new int[count];
+        int index = 0;
         Item current = first;
         while (current != null) {
-            dynaArray.add(current.value);
+            result[index++] = current.value;
             current = current.next;
         }
-        return dynaArray.toArray();
+        return result;
     }
+
 
     public String asString() {
         StringBuilder builder = new StringBuilder().append('[');
@@ -90,6 +114,7 @@ public class LinkedList {
     public boolean contains(int value) {
         return findPair(value) != null;
     }
+
 
     private static class Pair {
 

@@ -5,7 +5,34 @@ import java.util.Arrays;
         public class LinkedListTest {
 
             public static void main(String[] args) {
+                LinkedList secondList = new LinkedList();
+                secondList.add(new int[]{4, 5, 6});
+
                 LinkedList list = new LinkedList();
+                list.add(new int[]{1, 2, 3});
+                list.add(secondList);
+
+                System.out.println(list.asString());
+
+
+            /*    LinkedList list = new LinkedList();
+                list.add(new int[]{0, 1, 2, 3});
+                DynaArray dynaArray = new DynaArray();
+
+                dynaArray.add(list);
+
+                System.out.println(dynaArray.asString());
+*/
+            /*    DynaArray dynaArray = new DynaArray();
+                int[] array = {0, 1, 2, 3, 4};
+                dynaArray.add(array);
+
+                LinkedList list = new LinkedList();
+                list.add(array);
+                list.add(dynaArray);
+
+                System.out.println(list.asString());*/
+       /* LinkedList list = new LinkedList();
                 list.add(0);
                 list.add(1);
                 list.add(2);
@@ -15,7 +42,7 @@ import java.util.Arrays;
                 System.out.println(list.contains(2));
 
                 System.out.println(list.contains(100));
-                System.out.println(list.contains(-3));
+                System.out.println(list.contains(-3));*/
 
               /*  LinkedList list = new LinkedList();
                 list.add(0);
