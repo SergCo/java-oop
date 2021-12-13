@@ -1,7 +1,5 @@
 package structures;
 
-import java.util.Arrays;
-
 public class LinkedList {
 
     private Item first;
