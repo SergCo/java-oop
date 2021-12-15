@@ -9,7 +9,7 @@ public final class StackBasedOnArray extends BasedOnArrayDataStorage{
     public StackBasedOnArray() {
     }
 
-    @Override // не понятно что происходит с size, см. мое решение ниже
+   /* @Override // не понятно что происходит с size, см. мое решение ниже
     public int get() {
         if (size > 0) {
             return array[--size];
@@ -17,6 +17,11 @@ public final class StackBasedOnArray extends BasedOnArrayDataStorage{
             // TODO throw Exception
             return 0;
         }
+    }*/
+
+    @Override
+    protected int getItNotEmpty() {
+        return array[--size];
     }
 
      /*@Override

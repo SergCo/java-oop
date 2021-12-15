@@ -32,4 +32,15 @@ public abstract class BasedOnArrayDataStorage implements DataStorage {
     public final int size() {
         return size;
     }
+
+    public final int get() {
+        if (size > 0) {
+           return getItNotEmpty();
+        } else {
+            // TODO throw Exception
+            return 0;
+        }
+    }
+
+    protected abstract int getItNotEmpty();
 }

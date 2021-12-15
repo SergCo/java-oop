@@ -10,6 +10,14 @@ public final class QueueBasedOnArray extends BasedOnArrayDataStorage {
     }
 
     @Override
+    protected int getItNotEmpty() {
+        int result = array[0];
+        System.arraycopy(array, 1, array, 0, array.length - 1);
+        size--;
+        return result;
+    }
+
+   /* @Override
     public int get() {
         if (size > 0) {
             int result = array[0];
@@ -20,6 +28,6 @@ public final class QueueBasedOnArray extends BasedOnArrayDataStorage {
             // TODO throw Exception
             return 0;
         }
-    }
+    }*/
 
 }
