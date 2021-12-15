@@ -1,13 +1,13 @@
 package structures;
 
-public class LinkedList {
+
+public final class LinkedList extends BaseDataStructure {
 
     private Item first;
 
     private Item last;
 
-    private int count;
-
+    @Override
     public void add(int value) {
         Item item = new Item(value);
         if (first == null) {
@@ -19,15 +19,8 @@ public class LinkedList {
         count++;
     }
 
-   public void add(int[] array) {
-        for (int value : array) {
-            add(value);
-        }
-    }
 
-    public void add(DynaArray dynaArray) {
-        add(dynaArray.toArray());
-    }
+    @Override
     public void add(LinkedList secondList) {
         if (secondList.count > 0) {
             if (first == null) {
@@ -40,7 +33,7 @@ public class LinkedList {
         }
     }
 
-
+    @Override
     public int[] toArray() {
         int[] result = new int[count];
         int index = 0;
@@ -52,8 +45,8 @@ public class LinkedList {
         return result;
     }
 
-
-    public String asString() {
+    @Override
+    public String toString() {
         StringBuilder builder = new StringBuilder().append('[');
         Item current = first;
         while (current != null) {
@@ -66,12 +59,14 @@ public class LinkedList {
         return builder.append(']').toString();
     }
 
+    @Override
     public void clear() {
         first = null;
         last = null;
-        count = 0;
+        super.clear();
     }
 
+    @Override
     public boolean remove(int value) {
         Pair pair = findPair(value);
         if (pair != null) {
@@ -106,14 +101,15 @@ public class LinkedList {
         return null;
     }
 
-    public int size() {
-        return count;
-    }
+    @Override
     public boolean contains(int value) {
         return findPair(value) != null;
     }
 
-
+    /**
+     * @author devonline
+     * @link http://devonline.academy/java
+     */
     private static class Pair {
 
         private Item previous;
@@ -126,7 +122,10 @@ public class LinkedList {
         }
     }
 
-
+    /**
+     * @author devonline
+     * @link http://devonline.academy/java
+     */
     private static class Item {
 
         private int value;

@@ -11,8 +11,9 @@ import java.util.Arrays;
                 LinkedList list = new LinkedList();
                 list.add(new int[]{1, 2, 3});
                 list.add(secondList);
+                //list.add(4);
 
-                System.out.println(list.asString());
+                System.out.println(list);
 
 
             /*    LinkedList list = new LinkedList();

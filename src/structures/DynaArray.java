@@ -1,12 +1,11 @@
 package structures;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 
-public class DynaArray {
+public final class DynaArray extends BaseDataStructure {
 
     private int[] result;
-
-    private int count;
 
     public DynaArray() {
         this(5);
@@ -16,6 +15,7 @@ public class DynaArray {
         result = new int[size];
     }
 
+    @Override
     public void add(int value) {
         if (count == result.length) {
             grow(result.length == 0 ? 5 : result.length * 2);
@@ -23,13 +23,17 @@ public class DynaArray {
         result[count++] = value;
     }
 
+    @Override
     public void add(int[] array) {
         add(array, array.length);
     }
 
+    @Override
     public void add(DynaArray dynaArray) {
         add(dynaArray.result, dynaArray.count);
     }
+
+
 
     private void add(int[] array, int length) {
         if (result.length - count < length) {
@@ -38,9 +42,6 @@ public class DynaArray {
         System.arraycopy(array, 0, result, count, length);
         count += length;
     }
-    public void add(LinkedList list) {
-        add(list.toArray());
-    }
 
     private void grow(int newLength) {
         int[] newArray = new int[newLength];
@@ -48,11 +49,13 @@ public class DynaArray {
         result = newArray;
     }
 
+    @Override
     public int[] toArray() {
         return Arrays.copyOf(result, count);
     }
 
-    public String asString() {
+    @Override
+    public String toString() {
         final StringBuilder stringBuilder = new StringBuilder().append('[');
         for (int i = 0; i < count; i++) {
             stringBuilder.append(result[i]);
@@ -63,11 +66,7 @@ public class DynaArray {
         return stringBuilder.append(']').toString();
     }
 
-    public void clear() {
-        count = 0;
-
-    }
-
+    @Override
     public boolean remove(int value) {
         int index = indexOf(value);
         if (index != -1) {
@@ -94,12 +93,8 @@ public class DynaArray {
         return -1;
     }
 
-    public int size() {
-        return count;
-    }
-
+    @Override
     public boolean contains(int value) {
         return indexOf(value) != -1;
     }
-
 }

@@ -4,7 +4,7 @@ class DynaArrayTest {
     public static void main(String[] args) {
 
 
-     /*   DynaArray dynaArray = new DynaArray();
+       DynaArray dynaArray = new DynaArray();
         dynaArray.add(0);
         dynaArray.add(1);
         dynaArray.add(2);
@@ -14,7 +14,7 @@ class DynaArrayTest {
         System.out.println(dynaArray.contains(2));
 
         System.out.println(dynaArray.contains(100));
-        System.out.println(dynaArray.contains(-3));*/
+        System.out.println(dynaArray.contains(-3));
 
 
        /* DynaArray dynaArray = new DynaArray();
