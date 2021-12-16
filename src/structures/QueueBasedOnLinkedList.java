@@ -1,46 +1,24 @@
 package structures;
 
-public class QueueBasedOnLinkedList implements DataStorage{
+public final class QueueBasedOnLinkedList extends BasedOnLinkedListDataStorage {
 
-    private Item first;
     private Item last;
-    private int size=0;
 
     @Override
-    public void add(int value) {
-      Item newItem = new Item(value);
-      if(first==null) {
-          first=last=newItem;
-      } else {
-          last.next=newItem;
-          last=newItem;
-                }
-      size++;
+    protected void addNextItem(Item item) {
+        if (last == null) {
+            last = first;
+        }
+        last.next = item;
+        last = item;
     }
 
     @Override
     public int get() {
-          if(size>0) {
-          int result=first.value;
-          first=first.next;
-          size--;
-          return result;
-        } else {
-        return 0;
+        int result = super.get();
+        if (size == 0) {
+            last = null;
         }
-    }
-
-    @Override
-    public int size() {
-        return size;
-    }
-
-    class Item {
-         int value;
-         Item next;
-
-        Item(int value) {
-            this.value = value;
-        }
+        return result;
     }
 }
